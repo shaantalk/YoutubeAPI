@@ -52,40 +52,40 @@ class TestHumanReadableTime(unittest.TestCase):
 
 if __name__ == '__main__':
 
-    suite = None
-    print('Choose which functions to test :')
-    prompts = chain(['1 : get_playlist_id\n2 : human_readable_time\nall : Choose all test\n'], repeat(
-        "Wrong option! Try again : ", 2))
-    replies = map(input, prompts)
+    # suite = None
+    # print('Choose which functions to test :')
+    # prompts = chain(['1 : get_playlist_id\n2 : human_readable_time\nall : Choose all test\n'], repeat(
+    #     "Wrong option! Try again : ", 2))
+    # replies = map(input, prompts)
 
-    valid_response = next(filter(lambda option: option in [
-        '1',
-        '2',
-        '3',
-        'all'
-    ], replies), None)
+    # valid_response = next(filter(lambda option: option in [
+    #     '1',
+    #     '2',
+    #     '3',
+    #     'all'
+    # ], replies), None)
 
-    if valid_response:
-        if valid_response == '1':
-            suite = unittest.TestSuite(
-                (unittest.makeSuite(TestGetPlaylistID),))
+    # if valid_response:
+    #     if valid_response == '1':
+    #         suite = unittest.TestSuite(
+    #             (unittest.makeSuite(TestGetPlaylistID),))
 
-        elif valid_response == '2':
-            suite = unittest.TestSuite(
-                (unittest.makeSuite(TestHumanReadableTime),))
+    #     elif valid_response == '2':
+    #         suite = unittest.TestSuite(
+    #             (unittest.makeSuite(TestHumanReadableTime),))
 
-        elif valid_response == 'all':
-            listOfTests = [
-                TestGetPlaylistID,
-                TestHumanReadableTime
-            ]
+    #     elif valid_response == 'all':
+    listOfTests = [
+        TestGetPlaylistID,
+        TestHumanReadableTime
+    ]
 
-            initiatedListOfTests = map(
-                lambda test: unittest.makeSuite(test), listOfTests)
-            suite = unittest.TestSuite(initiatedListOfTests)
+    initiatedListOfTests = map(
+        lambda test: unittest.makeSuite(test), listOfTests)
+    suite = unittest.TestSuite(initiatedListOfTests)
 
-        # Run test cases
-        result = unittest.TextTestRunner(verbosity=2).run(suite)
-    else:
-        print('Max tries over!')
-        exit()
+    # Run test cases
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    # else:
+    #     print('Max tries over!')
+    #     exit()
