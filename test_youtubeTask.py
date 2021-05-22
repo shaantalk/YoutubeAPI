@@ -42,12 +42,12 @@ class TestHumanReadableTime(unittest.TestCase):
         self.assertEqual(expression, expectedValue, failMessage)
 
     # Test human_readable_time function for only seconds
-    def test_human_readable_time_only_seconds2(self):
-        expression = human_readable_time(51)
-        expectedValue = '51 secs'
-        failMessage = 'Test Failed : human_readable_time function for only seconds'
+    # def test_human_readable_time_only_seconds2(self):
+    #     expression = human_readable_time(51)
+    #     expectedValue = '51 secs'
+    #     failMessage = 'Test Failed : human_readable_time function for only seconds'
 
-        self.assertEqual(expression, expectedValue, failMessage)
+    #     self.assertEqual(expression, expectedValue, failMessage)
 
 
 if __name__ == '__main__':
