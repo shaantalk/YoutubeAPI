@@ -1,7 +1,6 @@
 import isodate
 import tableprint
 import xlsxwriter
-import tableprint as tp
 from itertools import chain, repeat
 from googleapiclient.discovery import build
 
