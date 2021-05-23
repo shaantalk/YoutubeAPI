@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "b884655e-d5ce-4d6f-bb08-2c0f1c6528de",
+		"name": "YoutubeAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Playlist Items List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&pageToken=&playlistId=PLkcctaU57y5ctgdK18QBThxJ8G4mB9q-u",
+					"protocol": "https",
+					"host": [
+						"youtube",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"youtube",
+						"v3",
+						"playlistItems"
+					],
+					"query": [
+						{
+							"key": "part",
+							"value": "contentDetails"
+						},
+						{
+							"key": "pageToken",
+							"value": ""
+						},
+						{
+							"key": "playlistId",
+							"value": "PLkcctaU57y5ctgdK18QBThxJ8G4mB9q-u"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Videos List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "AIzaSyBhJ1XmmRl9aON9Q1J-GPVC-MOKOybGEh4",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
