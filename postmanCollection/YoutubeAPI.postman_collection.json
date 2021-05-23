@@ -46,7 +46,30 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "https://youtube.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,id&id=1,2,3",
+					"protocol": "https",
+					"host": [
+						"youtube",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"youtube",
+						"v3",
+						"videos"
+					],
+					"query": [
+						{
+							"key": "part",
+							"value": "snippet,contentDetails,id"
+						},
+						{
+							"key": "id",
+							"value": "1,2,3"
+						}
+					]
+				}
 			},
 			"response": []
 		}
