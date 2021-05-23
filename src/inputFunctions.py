@@ -1,5 +1,5 @@
 from itertools import chain, repeat
-from helper.functions import get_playlist_id
+from helperFunctions import get_playlist_id
 
 
 # ------------------------------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 import isodate
-from googleapiclient.discovery import build
-from helper.functions import human_readable_time
+import requests
+from helperFunctions import human_readable_time
 
 # ------------------------------------------------------------------------------------------------------------------
 # Function Name : CalculateDuration
@@ -12,8 +12,6 @@ def calculate_playlist_duration(playlist_id):
     try:
         api_key = 'AIzaSyBhJ1XmmRl9aON9Q1J-GPVC-MOKOybGEh4'
 
-        youtube = build('youtube', 'v3', developerKey=api_key)
-
         sumDuration = 0
 
         videos = []
@@ -21,28 +19,44 @@ def calculate_playlist_duration(playlist_id):
         nextPageToken = None
         while True:
             # API : https://developers.google.com/youtube/v3/docs/playlistItems/list?apix=true
-            playlist_page = youtube.playlistItems().list(
-                part='contentDetails',
-                playlistId=playlist_id,
-                maxResults=50,
-                pageToken=nextPageToken
-            ).execute()
+            playlist_items_list_url = 'https://youtube.googleapis.com/youtube/v3/playlistItems'
+            playlist_api_params = {
+                'key': api_key,
+                'part': 'contentDetails',
+                'playlistId': playlist_id,
+                'maxResults': 50,
+                'pageToken': nextPageToken
+            }
+            playlist_page = requests.get(
+                url=playlist_items_list_url, params=playlist_api_params).json()
+
+            # print('Playlist Page', playlist_page)
 
             video_ids = [item['contentDetails']['videoId']
                          for item in playlist_page['items']]
 
-            # API : https://developers.google.com/youtube/v3/docs/videos/list
-            video_items = youtube.videos().list(
-                part="snippet,contentDetails,id",
-                id=','.join(video_ids)
-            ).execute()['items']
+            # print('Video IDs', video_ids)
 
-            for item in video_items:
-                id = item['id']
-                link = 'https://www.youtube.com/watch?v='+item['id']
-                title = item['snippet']['title']
+            # API : https://developers.google.com/youtube/v3/docs/videos/list
+            videos_list_url = 'https://youtube.googleapis.com/youtube/v3/videos'
+            videos_list_params = {
+                'key': api_key,
+                'part': "snippet,contentDetails,id",
+                'id': ','.join(video_ids)
+            }
+
+            video_items = requests.get(
+                url=videos_list_url, params=videos_list_params).json()['items']
+            # video_items = video_req.json()
+
+            # print('Video Items', video_items['items'])
+
+            for video in video_items:
+                id = video['id']
+                link = 'https://www.youtube.com/watch?v='+video['id']
+                title = video['snippet']['title']
                 duration = isodate.parse_duration(
-                    item['contentDetails']['duration']).total_seconds()
+                    video['contentDetails']['duration']).total_seconds()
 
                 videos.append((id, link, title, human_readable_time(duration)))
                 sumDuration += duration
