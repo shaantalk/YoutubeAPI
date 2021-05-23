@@ -1,7 +1,6 @@
-
-from input.functions import *
-from youtube.functions import *
-from output.functions import *
+from inputFunctions import *
+from youtubeFunctions import *
+from outputFunctions import *
 
 # ------------------------------------------------------------------------------------------------------------------
 # Function : main
