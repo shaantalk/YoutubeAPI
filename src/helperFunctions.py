@@ -2,7 +2,6 @@
 # Function Name : get_playlist_id
 # Description : Returns playlist_id or none
 # Unit Tests : Done
-# www.youtube.com/watch?v=g4Fny0Zz5j8&list=PLkcctaU57y5ctgdK18QBThxJ8G4mB9q-u
 # ------------------------------------------------------------------------------------------------------------------
 
 def get_playlist_id(playlist_url):
