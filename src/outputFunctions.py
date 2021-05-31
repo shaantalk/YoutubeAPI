@@ -1,28 +1,21 @@
 import tableprint
 import xlsxwriter
 
-# ------------------------------------------------------------------------------------------------------------------
-# Function Name : output_in_console
-# Description : Output in console
-# ------------------------------------------------------------------------------------------------------------------
+# Description : Output in console. Used tableprint to make the output in tabular format
 
 
 def output_in_console(result):
     try:
-        headers = ['ID', 'Link', 'Title', 'Duration']
-        width = [15, 45, 80, 15]
+        headers = ['ID', 'Title', 'Duration']
+        width = [15, 80, 15]
 
         tableprint.table(result['videos'], headers, width=width)
 
         print("Total Duration : ", result['duration'])
     except Exception as e:
         print(e)
-# ------------------------------------------------------------------------------------------------------------------
 
-# ------------------------------------------------------------------------------------------------------------------
-# Function Name : output_in_txt_file
 # Description : Output in text file
-# ------------------------------------------------------------------------------------------------------------------
 
 
 def output_in_txt_file(result):
@@ -31,9 +24,8 @@ def output_in_txt_file(result):
 
         for video in result['videos']:
             f.write('ID : '+video[0]+'\n')
-            f.write('Link : '+video[1]+'\n')
-            f.write('Title : '+video[2]+'\n')
-            f.write('Duration : '+video[3]+'\n')
+            f.write('Title : '+video[1]+'\n')
+            f.write('Duration : '+video[2]+'\n')
             f.write('\n\n')
 
         f.write('Total Duration : '+result['duration'])
@@ -41,12 +33,8 @@ def output_in_txt_file(result):
         f.close()
     except Exception as e:
         print(e)
-# ------------------------------------------------------------------------------------------------------------------
 
-# ------------------------------------------------------------------------------------------------------------------
-# Function Name : output_in_excel_file
 # Description : Output in excel file
-# ------------------------------------------------------------------------------------------------------------------
 
 
 def output_in_excel_file(result):
@@ -61,15 +49,13 @@ def output_in_excel_file(result):
                    'autofilter': False,
                    'columns': [
             {'header': 'ID'},
-            {'header': 'Link'},
             {'header': 'Title'},
             {'header': 'Duration'},
         ]
         }
 
-        worksheet.add_table('A4:D'+str(len(result['videos'])+4), options)
+        worksheet.add_table('A4:C'+str(len(result['videos'])+4), options)
 
         workbook.close()
     except Exception as e:
         print(e)
-# ------------------------------------------------------------------------------------------------------------------

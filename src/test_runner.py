@@ -1,16 +1,16 @@
 import unittest
-from tests.test_get_playlist_id import *
 from tests.test_human_readable_time import *
 
 
 if __name__ == '__main__':
-    listOfTests = [
-        TestGetPlaylistID,
-        TestHumanReadableTime
-    ]
+    listOfTests = [TestHumanReadableTime]
 
+    # Not initiating gives an error
     initiatedListOfTests = map(
-        lambda test: unittest.makeSuite(test), listOfTests)
+        lambda test: unittest.makeSuite(test),
+        listOfTests
+    )
+
     suite = unittest.TestSuite(initiatedListOfTests)
 
     # Run test cases

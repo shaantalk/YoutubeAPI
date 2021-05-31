@@ -27,5 +27,5 @@ Used GitHub actions that triggers on push of all branches and on pull request on
 ## Deployment details
 Uploaded in GitHub and run in local
 
-## Sample playlist link
-www.youtube.com/watch?v=g4Fny0Zz5j8&list=PLkcctaU57y5ctgdK18QBThxJ8G4mB9q-u
+## Sample playlist links
+8 videos in playlist : PLkcctaU57y5ctgdK18QBThxJ8G4mB9q-u
